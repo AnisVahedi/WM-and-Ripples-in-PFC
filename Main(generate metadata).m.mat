@@ -1,0 +1,99 @@
+clear all
+close all
+clc
+% Initialize MetadataManager for a monkey
+csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv';
+%
+managerADR = MetadataManager(csvPath, 'ADR', 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr', 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR');
+% 
+% Process and save Metadata
+Metadata_ADR = managerADR.process();
+managerADR.save(Metadata_ADR, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR.mat');
+managerADR = MetadataManager(csvPath, 'ADR', 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr', 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR');
+
+
+% Clear only the variables specific to ADR to save memory, if needed
+clear managerADR Metadata_ADR;
+
+
+% % NIN
+managerNIN = MetadataManager(csvPath, 'NIN', 'E:\AnisMnis\AnisMnis\LFPDataFor\NIN\All_NIN','', true);
+Metadata_NIN = managerNIN.process();
+managerNIN.save(Metadata_NIN, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_NIN.mat');
+
+% % Repeat for the next monkey (ELV)
+clear managerNIN Metadata_NIN;
+managerELV_2_pre = MetadataManager(csvPath , 'ELV','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ELV\FeatureTask\PreTraining\PreTraining');
+Metadata_ELV_2_pre = managerELV_2_pre.process();
+managerELV_2_pre.save(Metadata_ELV_2_pre, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ELV_2_pre.mat');
+
+% 
+% clear managerELV_2_pre Metadata_ELV_2_pre;
+managerELV_2_po = MetadataManager(csvPath , 'ELV','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ELV\FeatureTask\PostTraining\PostTraining\CorrectTrials');
+Metadata_ELV_2_po = managerELV_2_po.process();
+managerELV_2_po.save(Metadata_ELV_2_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ELV_2_po.mat');
+
+clear managerELV_2_po Metadata_ELV_2_po;
+managerELV_1_pre = MetadataManager(csvPath , 'ELV','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ELV\SpatialTask\PreTraining\PreTraining');
+Metadata_ELV_1_pre = managerELV_1_pre.process();
+managerELV_1_pre.save(Metadata_ELV_1_pre, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ELV_1_pre.mat');
+
+% 
+% clear managerELV_1_pre Metadata_ELV_1_pre;
+managerELV_1_po = MetadataManager(csvPath , 'ELV','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ELV\SpatialTask\PostTraining\PostTraining\CorrectTrials');
+Metadata_ELV_1_po = managerELV_1_po.process();
+managerELV_1_po.save(Metadata_ELV_1_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ELV_1_po.mat');
+% %-------------------------------------------------------------------------------------------------
+% clear managerELV_1_po Metadata_ELV_1_po;
+managerADR_2_pre = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ADR\ADR\FeatureTask\PreTraining');
+Metadata_ADR_2_pre = managerADR_2_pre.process();
+managerADR_2_pre.save(Metadata_ADR_2_pre, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_2_pre.mat');
+
+%%
+% clear managerADR_2_pre Metadata_ADR_2_pre;
+managerADR_2_po = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ADR\ADR\FeatureTask\PostTraining\CorrectTrials');
+Metadata_ADR_2_po = managerADR_2_po.process();
+managerADR_2_po.save(Metadata_ADR_2_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_2_po.mat');
+%%
+% clear managerADR_2_po Metadata_ADR_2_po;
+managerADR_1_pre = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ADR\ADR\SpatialTask\PreTraining');
+Metadata_ADR_1_pre = managerADR_1_pre.process();
+managerADR_1_pre.save(Metadata_ADR_1_pre, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_1_pre.mat');
+
+
+% clear managerADR_1_pre Metadata_ADR_1_pre;
+managerADR_1_po = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ADR\ADR\SpatialTask\PostTraining\CorrectTrials');
+Metadata_ADR_1_po = managerADR_1_po.process();
+managerADR_1_po.save(Metadata_ADR_1_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_1_po.mat');
+% 
+
+
+% %%
+% % Step 1: Load the CSV file and convert it to a table
+% csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv'; % Update with the actual path
+% % Metadata = readtable(csvPath);
+% Metadata = readtable(csvPath, 'VariableNamingRule', 'preserve');
+% 
+% % Ensure the MatData and LFPData columns exist
+% Metadata.MatData = cell(height(Metadata), 1); % Initialize column if it doesn't exist
+% 
+% % Define directories
+% neuron_data_directory = 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr';
+% lfp_data_directory = 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR'; % Example LFP data directory
+% monkeyName = 'ADR'; % Example monkey name
+% 
+% % Call the optimized function
+% Metadata_ADR = addMatDataToTableOptimized(Metadata, monkeyName, neuron_data_directory, lfp_data_directory);
+% 
+% 
+% % Get the subset of the table from the 16th column to the end
+% subTable = Metadata_ADR(:, 15:end);
+% 
+% % Create a logical array where each element is true if all entries in a row of subTable are empty
+% rowsToRemove = all(cellfun(@isempty, table2cell(subTable), 'UniformOutput', true), 2);
+% 
+% % Remove the rows from Metadata where rowsToRemove is true
+% Metadata_ADR(rowsToRemove, :) = [];
+% %%
+% path_directory='E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike';
+% save(fullfile(path_directory, 'Metadata_ADR.mat'), 'Metadata_ADR', '-v7.3');
