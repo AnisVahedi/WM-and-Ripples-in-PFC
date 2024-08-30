@@ -3,15 +3,11 @@ close all
 clc
 % Initialize MetadataManager for a monkey
 csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv';
-%
 managerADR = MetadataManager(csvPath, 'ADR', 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr', 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR');
-% 
 % Process and save Metadata
 Metadata_ADR = managerADR.process();
 managerADR.save(Metadata_ADR, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR.mat');
 managerADR = MetadataManager(csvPath, 'ADR', 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr', 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR');
-
-
 % Clear only the variables specific to ADR to save memory, if needed
 clear managerADR Metadata_ADR;
 
@@ -60,15 +56,11 @@ managerADR_1_pre = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPData
 Metadata_ADR_1_pre = managerADR_1_pre.process();
 managerADR_1_pre.save(Metadata_ADR_1_pre, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_1_pre.mat');
 
-
 % clear managerADR_1_pre Metadata_ADR_1_pre;
 managerADR_1_po = MetadataManager(csvPath , 'ADR','E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr','E:\AnisMnis\AnisMnis\LFPDataFor\ADR\ADR\SpatialTask\PostTraining\CorrectTrials');
 Metadata_ADR_1_po = managerADR_1_po.process();
 managerADR_1_po.save(Metadata_ADR_1_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike', 'Metadata_ADR_1_po.mat');
-% 
 
-
-% %%
 % % Step 1: Load the CSV file and convert it to a table
 % csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv'; % Update with the actual path
 % % Metadata = readtable(csvPath);
@@ -76,24 +68,21 @@ managerADR_1_po.save(Metadata_ADR_1_po, 'E:\AnisMnis\AnisMnis\LFPDataFor\Link_lf
 % 
 % % Ensure the MatData and LFPData columns exist
 % Metadata.MatData = cell(height(Metadata), 1); % Initialize column if it doesn't exist
-% 
+
 % % Define directories
 % neuron_data_directory = 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr';
 % lfp_data_directory = 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR'; % Example LFP data directory
 % monkeyName = 'ADR'; % Example monkey name
-% 
+
 % % Call the optimized function
-% Metadata_ADR = addMatDataToTableOptimized(Metadata, monkeyName, neuron_data_directory, lfp_data_directory);
-% 
-% 
+% Metadata_ADR = addMatDataToTableOptimized(Metadata, monkeyName, neuron_data_directory, lfp_data_directory); 
 % % Get the subset of the table from the 16th column to the end
 % subTable = Metadata_ADR(:, 15:end);
-% 
+
 % % Create a logical array where each element is true if all entries in a row of subTable are empty
 % rowsToRemove = all(cellfun(@isempty, table2cell(subTable), 'UniformOutput', true), 2);
-% 
+
 % % Remove the rows from Metadata where rowsToRemove is true
 % Metadata_ADR(rowsToRemove, :) = [];
-% %%
 % path_directory='E:\AnisMnis\AnisMnis\LFPDataFor\Link_lfp_spike';
 % save(fullfile(path_directory, 'Metadata_ADR.mat'), 'Metadata_ADR', '-v7.3');
