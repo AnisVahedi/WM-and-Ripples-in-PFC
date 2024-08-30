@@ -1,7 +1,6 @@
 clear all
 close all
 clc
-
 % Initialize MetadataManager for a monkey
 csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv';
 %%
