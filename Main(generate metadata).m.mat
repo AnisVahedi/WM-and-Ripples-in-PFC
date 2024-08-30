@@ -3,7 +3,7 @@ close all
 clc
 % Initialize MetadataManager for a monkey
 csvPath = 'E:\AnisMnis\AnisMnis\LFPDataFor\Metadata_v2.csv';
-%%
+%
 managerADR = MetadataManager(csvPath, 'ADR', 'E:\AnisMnis\AnisMnis\LFPDataFor\spike_data\data\elv_adr', 'E:\AnisMnis\AnisMnis\LFPDataFor\ADR\All_ADR');
 % 
 % Process and save Metadata
